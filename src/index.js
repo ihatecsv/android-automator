@@ -107,6 +107,19 @@ class AndroidAutomator {
     this.logger.debug(`Tapping selector "${selector}" at ${x} x ${y}`);
     return this.tapByCords(x, y);
   }
+
+    /**
+   * Checks if a selector exists.
+   * @param {string} selector - element's selector
+   */
+  async findSelector (selector) {
+    try{
+      await this.structure.getElementBounds(selector);
+    } catch {
+      return false;
+    }
+    return true;
+  }
   
   /**
    * Gets battery level
